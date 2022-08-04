@@ -95,6 +95,7 @@ echo "Enter your key no. to choose one of these existing keys!"
 read kn
 if [ $kn -le $key_count ]
     then
+        gpg --armor --export ${key_array[$((kn-1))]}
         git config --global user.signingkey ${key_array[$((kn-1))]}
         git config --global commit.gpgsign true
         echo "Your key is succesfully set!!!"
